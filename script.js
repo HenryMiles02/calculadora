@@ -23,8 +23,31 @@ function appendOperator(operator) {
     updateDisplay();
 }
 
-function deleteAll() {
+function calculate() {
+    try {
+        let expression = currentInput
+        .replace(/,/g, '.') // Substitui vírgula por ponto
+        .replace(/x/g, '*') // Substitui 'x' por '*'
+        .replace(/%/g, '/100') // Substitui '%' por '/100', porcentagem
+        .replace(/÷/g, '/'); // Substitui '÷' por '/'
+        
+        let result = Function(`"use strict"; return (${expression})`)();
+        currentInput = result.toString();
+        updateDisplay();
+    } catch (error) {
+        display.textContent = 'Error';
+        currentInput = '0';
+    }
+}
+
+function clearDisplay() {
     currentInput = '';
     operator = '';
+    updateDisplay();
+}
+
+
+function deleteAll() {
+    currentInput = currentInput.slice(0, -1);
     updateDisplay();
 }

@@ -64,6 +64,11 @@ body {
     color: rgb(0, 255, 0);
 }
 
+.buttons .delete {
+    font-size: 1.7rem;
+    color: rgb(0, 255, 0);
+}
+
 .buttons .calc {
     grid-row: span 2;
     grid-column: 4;
